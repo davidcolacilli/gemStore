@@ -4,16 +4,17 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
   </head>
   <body ng-controller="StoreController as store">
     <div ng-repeat="product in store.products">
       <h3>{{product.name}}</h3>
       <em>Price: {{product.price}}</em>
-      <p><button type="button" name="button" ng-show="product.canPurchase">Add to cart</button></p>
+      <p><button type="button" name="button" ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart</button></p>
     </div>
+    
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>

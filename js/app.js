@@ -1,10 +1,15 @@
 (function(){
-  var gems, x;
+  var gems;
   angular.module("gemStore", []);
   angular.module("gemStore").controller("StoreController", MyFunction);
   
-  function MyFunction(){
+  function MyFunction($log){
     this.products = gems;
+    this.purchase = purchase;
+    
+    function purchase(product){
+      $log.warn("clicked");
+    };
   };
   
   gems = [
