@@ -7,8 +7,9 @@
   </head>
   <body ng-controller="StoreController as store">
     <div ng-repeat="product in store.products">
-      <h3>{{product.name}}</h3>
-      <em>Price: {{product.price}}</em>
+      <h3 ng-cloak>{{product.name}}</h3>
+      <!--em>Price: {{product.price}}</em-->
+      <em ng-bind="'$' + product.price "></em>
       <p><button type="button" name="button" ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart</button></p>
     </div>
     
