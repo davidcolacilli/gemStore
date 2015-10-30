@@ -1,1 +1,5 @@
 @import url(http://reset5.googlecode.com/hg/reset.min.css);
+img {width: 100%}
+article figure {
+    margin-bottom: 20px;
+}

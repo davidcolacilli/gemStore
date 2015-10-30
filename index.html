@@ -6,12 +6,18 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
   </head>
   <body ng-controller="StoreController as store">
-    <div ng-repeat="product in store.products">
-      <h3 ng-cloak>{{product.name}}</h3>
-      <!--em>Price: {{product.price}}</em-->
-      <em ng-bind="'$' + product.price "></em>
-      <p><button type="button" name="button" ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart</button></p>
-    </div>
+    <article class="container">
+      <div ng-repeat="product in store.products" class="col-md-4">
+          <h3 ng-cloak>{{product.name}}</h3>
+          <!--em>Price: {{product.price}}</em-->
+          <em ng-bind="product.price | currency:'AR$ '"></em>
+          <figure><img ng-src="{{product.images[0]}}"/></figure>
+          <figure class="row">
+              <img class="col-md-4" ng-repeat="image in product.images" ng-src="{{image}}"/>
+          </figure>
+          <p><button type="button" name="button" ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart</button></p>
+      </div>
+    </article>
     
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
