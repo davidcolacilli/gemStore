@@ -1,24 +1,45 @@
 <!DOCTYPE html>
 <html ng-app="gemStore">
   <head>
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
   </head>
   <body ng-controller="StoreController as store">
+    <div class="animate">
+    <!--p>
+      asdf
+    </p-->
+    </div>
     <article class="container">
-      <div ng-repeat="product in store.products" class="col-md-4">
+      <div ng-repeat="product in store.products" class="col-sm-4">
           <h3 ng-cloak>{{product.name}}</h3>
           <!--em>Price: {{product.price}}</em-->
           <em ng-bind="product.price | currency:'AR$ '"></em>
-          <figure><img ng-src="{{product.images[0]}}"/></figure>
-          <figure class="row">
-              <img class="col-md-4" ng-repeat="image in product.images" ng-src="{{image}}"/>
+          <figure class="row" ng-show="{{product.images}}">
+              <img class="col-sm-12" ng-src="{{product.images[0]}}"/>
+              <img class="col-sm-4" ng-repeat="image in product.images" ng-src="{{image}}"/>
           </figure>
-          <p><button type="button" name="button" ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart</button></p>
+          <button type="button" name="button" ng-hide="!product.canPurchase" ng-click="store.purchase(product)">Add to cart</button>
       </div>
     </article>
-    
+    <script type="text/javascript">
+      /*This particular example prints out “Fizz” at multiples of 3. 
+      Prints out “Buzz” at multiples of 5 and prints out “FizzBuzz” at multiples of 3 and 5.*/
+      /*
+      for (var i = 0; i < 100 ; i++) {
+        if (i % 15 == 0 ) {
+          console.log("Fizzbuzz");
+        } else if (i % 3 == 0) {
+          console.log("Fizz");
+        }else if (i % 5 == 0) {
+          console.log("Buzz");
+        }else {
+          console.log(i);
+        }
+      }*/
+    </script>
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
