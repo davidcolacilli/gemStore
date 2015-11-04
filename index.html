@@ -1,29 +1,66 @@
 <!DOCTYPE html>
 <html ng-app="gemStore">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
   </head>
   <body ng-controller="StoreController as store">
-    <div class="animate">
-    <!--p>
-      asdf
-    </p-->
-    </div>
     <article class="container">
+      <h1 class="text-center">gemStore</h1>
       <div ng-repeat="product in store.products" class="col-sm-4">
           <h3 ng-cloak>{{product.name}}</h3>
           <!--em>Price: {{product.price}}</em-->
           <em ng-bind="product.price | currency:'AR$ '"></em>
-          <figure class="row" ng-show="{{product.images}}">
-              <img class="col-sm-12" ng-src="{{product.images[0]}}"/>
-              <img class="col-sm-4" ng-repeat="image in product.images" ng-src="{{image}}"/>
+          <figure class="row" ng-show="{{product.images.length}}">
+              <img class="col-sm-12" ng-src="{{product.currentImg || product.images[0]}}"/>
+              <img class="col-sm-4" ng-repeat="image in product.images" ng-src="{{image}}" ng-click="product.currentImg = image"/>
           </figure>
+          
           <button type="button" name="button" ng-hide="!product.canPurchase" ng-click="store.purchase(product)">Add to cart</button>
+          
+          <section class="tab" ng-controller="TabController as tabCtrl">
+            <ul class="nav nav-pills">
+              <li ng-class="{active: tabCtrl.isSet(1)}"><a href="" ng-click="tabCtrl.setTab(1)">Description</a></li>
+              <li ng-class="{active: tabCtrl.isSet(2)}"><a href="" ng-click="tabCtrl.setTab(2)">Specifications</a></li>
+              <li ng-class="{active: tabCtrl.isSet(3)}"><a href="" ng-click="tabCtrl.setTab(3)">Reviews</a></li>
+            </ul>
+            <div ng-show="tabCtrl.isSet(1)">
+              <h3>Description</h3>
+              {{product.description}}
+            </div>
+            <div ng-show="tabCtrl.isSet(2)">
+              <h3>Specifications</h3>
+              <ul>
+                <li>Shine: {{product.shine}}</li>
+                <li>Rarity: {{product.rarity}}</li>
+                <li>Faces: {{product.faces}}</li>
+              </ul>
+            </div>
+            <div ng-show="tabCtrl.isSet(3)">
+              <h3>Reviews</h3>
+            </div>
+          </section>
       </div>
     </article>
+    <footer>
+      <address class="text-center">
+        Made with love, AngularJS and Bootstrap by David
+      </address>
+    </footer>
+    <!--footer>
+      <h2>Contact us</h2>
+      <form name="myForm" class="" action="index.html" method="post">
+        <input ng-required="example.required" type="text" name="name" value="Name, please">
+        <input type="checkbox" name="req" value="" ng-model="example.required">Required
+        <input type="submit" name="submit" value="Submit">
+      </form>
+      <pre>
+        {{myForm|json}}
+      </pre>
+    </footer-->
     <script type="text/javascript">
       /*This particular example prints out “Fizz” at multiples of 3. 
       Prints out “Buzz” at multiples of 5 and prints out “FizzBuzz” at multiples of 3 and 5.*/
@@ -39,6 +76,19 @@
           console.log(i);
         }
       }*/
+      /*var foo = 1;
+      function bar() {
+      	if (!foo) {
+      		var foo = 10;
+      	}
+      	console.log(foo);
+        function asdf() {
+          alert(foo);
+        }
+        asdf();
+      }
+      bar();*/
+
     </script>
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
