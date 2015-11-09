@@ -1,0 +1,4 @@
+<figure class="row" ng-show="{{product.images.length}}">
+    <img class="col-sm-12" ng-src="{{product.images[gallery.current]}}"/>
+    <img class="col-sm-4 thumb" ng-repeat="image in product.images" ng-src="{{image}}" ng-click="gallery.setImg($index)"/>
+</figure>

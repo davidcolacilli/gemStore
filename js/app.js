@@ -3,28 +3,19 @@
   angular.module("gemStore", []);
   angular.module("gemStore")
     .controller("StoreController", StoreController)
-    .controller("TabController", TabController)
-    .controller("ReviewController", ReviewController);
+    .controller("ReviewController", ReviewController)
+    .directive("productDescription", ProductDescription)
+    .directive("productSpecs", ProductSpecs)
+    .directive("productTabs", ProductTabs)
+    .directive("productGallery", ProductGallery);
   
+  //Controller functions
   function StoreController($log){
     this.products = gems;
     this.purchase = purchase;
     
     function purchase(product){
       $log.warn("clicked");
-    };
-  };
-  function TabController() {
-    var vm = this;
-    vm.tab = 3,
-    vm.setTab = setTab,
-    vm.isSet = isSet;
-    
-    function setTab(tab) {
-      vm.tab = tab;
-    };
-    function isSet(isSet){
-      return isSet == vm.tab;
     };
   };
   function ReviewController() {
@@ -35,6 +26,56 @@
       this.review = {};
     }
   };
+  
+  //Directive functions
+  function ProductDescription() {
+    return {
+      restrict: 'E',
+      templateUrl: '../product-description.html'
+    };
+  };
+  function ProductSpecs() {
+    return {
+      restrict: 'A',
+      templateUrl: '../product-specs.html'
+    };
+  };
+  function ProductTabs() {
+    return {//always return
+      restrict: 'E',
+      templateUrl: '../product-tabs.html',
+      controller: function() {//here, as a inner method
+        var vm = this;
+        vm.tab = 1,
+        vm.setTab = setTab,
+        vm.isSet = isSet;
+        
+        function setTab(tab) {
+          vm.tab = tab;
+        };
+        function isSet(isSet){
+          return isSet == vm.tab;
+        };
+      },
+      controllerAs: 'tab'
+    }
+  };
+  function ProductGallery() {
+    return {
+      restrict: 'E',
+      templateUrl: '../product-gallery.html',
+      controller: function() {
+        var vm = this;
+        vm.current = 0;
+        vm.setImg = function(img) {
+          vm.current = img || 0;
+        };
+      },
+      controllerAs: 'gallery'
+    };
+  }
+  
+  
   
 /*GEMS*/  
       var gems = [{

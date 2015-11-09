@@ -30,3 +30,6 @@ footer address {
 input.ng-dirty.ng-invalid {
   border: 1px solid red;
 }
+.thumb:hover {
+  opacity: 0.85;
+}
