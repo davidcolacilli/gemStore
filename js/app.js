@@ -3,7 +3,8 @@
   angular.module("gemStore", []);
   angular.module("gemStore")
     .controller("StoreController", StoreController)
-    .controller("TabController", TabController);
+    .controller("TabController", TabController)
+    .controller("ReviewController", ReviewController);
   
   function StoreController($log){
     this.products = gems;
@@ -15,7 +16,7 @@
   };
   function TabController() {
     var vm = this;
-    vm.tab = 1,
+    vm.tab = 3,
     vm.setTab = setTab,
     vm.isSet = isSet;
     
@@ -25,6 +26,14 @@
     function isSet(isSet){
       return isSet == vm.tab;
     };
+  };
+  function ReviewController() {
+    this.review = {};
+    this.addReview = function(product) {
+      this.createdOn = Date.now();
+      product.reviews.push(this.review);
+      this.review = {};
+    }
   };
   
 /*GEMS*/  
