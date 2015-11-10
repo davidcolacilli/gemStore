@@ -95,9 +95,9 @@
           color: '#CCC',
           faces: 14,
           images: [
-            "img/gem-01.png",
-            "img/gem-02.png",
-            "img/gem-03.png"
+            "img/watch-01.jpg",
+            "img/watch-02.jpg",
+            "img/watch-03.jpg"
           ],
           reviews: [{
               stars: 5,
@@ -119,9 +119,9 @@
           color: '#EEE',
           faces: 12,
           images: [
-            "img/gem-04.png",
-            "img/gem-05.png",
-            "img/gem-06.png",
+            "img/watch-04.jpg",
+            "img/watch-05.jpg",
+            "img/watch-06.jpg",
           ],
           reviews: [{
               stars: 3,
@@ -143,9 +143,9 @@
           color: '#000',
           faces: 6,
           images: [
-            "img/gem-07.png",
-            "img/gem-08.png",
-            "img/gem-09.png"
+            "img/watch-07.jpg",
+            "img/watch-08.jpg",
+            "img/watch-09.jpg"
           ],
           reviews: [{
               stars: 1,
