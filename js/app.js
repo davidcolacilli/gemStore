@@ -3,10 +3,10 @@
   angular.module("gemStore", []);
   angular.module("gemStore")
     .controller("StoreController", StoreController)
-    .controller("ReviewController", ReviewController)
     .directive("productDescription", ProductDescription)
     .directive("productSpecs", ProductSpecs)
     .directive("productTabs", ProductTabs)
+    .directive("productReviews", ProductReviews)
     .directive("productGallery", ProductGallery);
   
   //Controller functions
@@ -17,14 +17,6 @@
     function purchase(product){
       $log.warn("clicked");
     };
-  };
-  function ReviewController() {
-    this.review = {};
-    this.addReview = function(product) {
-      this.createdOn = Date.now();
-      product.reviews.push(this.review);
-      this.review = {};
-    }
   };
   
   //Directive functions
@@ -60,6 +52,22 @@
       controllerAs: 'tab'
     }
   };
+  function ProductReviews() {
+    return {
+      restrict: 'E',
+      templateUrl: '../product-reviews.html',
+      controller: function() {
+        var vm = this;
+        vm.review = {};
+        vm.addReview = function(product) {
+          vm.createdOn = Date.now();
+          product.reviews.push(vm.review);
+          vm.review = {};
+        };
+      },
+      controllerAs: 'reviewCtrl'
+    };
+  }
   function ProductGallery() {
     return {
       restrict: 'E',
