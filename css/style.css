@@ -6,24 +6,31 @@ body.watches {
   max-width: 1070px !important;
 }
 article h1 {
-  border-bottom: 1px solid #111;
-  /*color: #337ab7;*/
-  color: #EEE;
-  padding-bottom: 0.5em;
+  border-bottom: 2px solid #090909;
+  padding: 0.5em 0 1em;
+  position: relative;
+}
+article h1::after {
+  content: '';
+  display: block;
+  border-top: 1px solid #333;
+  position: absolute;
+  bottom: -3px;
+  width: 100%;
 }
 .nav-pills {
   border-bottom: 1px solid #F5F5F5;
   padding-bottom: 10px;
 }
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-  background-color: #F0AD4E !important;
-  color: #333 !important;
+  background-color: #CCC !important;
+  color: #222 !important;
 }
 .nav>li>a:focus, .nav>li>a:hover {
-  background-color: #222 !important;
+  background-color: #333 !important;
 }
 .nav a {
-  color: #F0AD4E !important;
+  color: #CCC !important;
 }
 button {
   display: block;
@@ -32,10 +39,9 @@ article figure {
   margin-top: 20px;
 }
 article figure > img {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 footer {
-  /*border-top: 1px solid #F5F5F5;*/
   background-color: #111;
   color: #444;
   margin: 30px 0 0;
@@ -49,5 +55,5 @@ input.ng-dirty.ng-invalid {
 }
 .thumb:hover {
   cursor: pointer;
-  opacity: 0.85;
+  opacity: 0.7;
 }
